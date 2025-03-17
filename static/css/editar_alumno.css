@@ -1,0 +1,130 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para el título principal */
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Estilos del formulario */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilos de los labels y campos de entrada */
+form label {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+form input:focus {
+    border-color: #28a745;
+    outline: none;
+}
+
+/* Estilos del botón */
+form button {
+    background-color: #28a745; /* Color principal consistente con index.css */
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #218838; /* Variación del color para hover */
+}
+
+/* Estilos del enlace para volver */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    color: white;
+    background-color: #17a2b8; /* Color coherente con los botones de index.css */
+    text-decoration: none;
+    text-align: center;
+    width: 200px;
+    margin: 20px auto;
+}
+
+a:hover {
+    background-color: #0056b3; /* Color de hover para el enlace */
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    form {
+        font-size: 0.9em;
+    }
+
+    form label {
+        font-size: 1em;
+    }
+
+    form input, form button {
+        font-size: 1em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    form {
+        font-size: 0.9em;
+    }
+
+    form button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    a {
+        font-size: 1em;
+    }
+}

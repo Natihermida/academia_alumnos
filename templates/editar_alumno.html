@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Alumno</title>
+    <link href="{{ url_for('static', filename='css/editar_alumno.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Editar Alumno</h1>
+    <form action="{{ url_for('editar_alumno', id=alumno[0]) }}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ alumno[1] }}" required><br><br>
+
+        <label for="asignatura_id">Asignatura ID:</label>
+        <input type="number" id="asignatura_id" name="asignatura_id" value="{{ alumno[2] }}" required><br><br>
+
+        <label for="calificacion">Calificación:</label>
+        <input type="number" id="calificacion" name="calificacion" value="{{ alumno[3] }}" required><br><br>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <a href="{{ url_for('area_profesor') }}">Volver al área profesor</a>
+</body>
+</html>
+

@@ -59,7 +59,7 @@ def registrar_alumno():
         return redirect(url_for('index'))
     return render_template('registrar_alumno.html')
 
-# Ruta para mostrar las asignaturas (opcional, si deseas agregar más funcionalidades)
+# Ruta para mostrar las asignaturas (opcional)
 @app.route('/asignaturas')
 def asignaturas():
     conn = sqlite3.connect('academia.db')
@@ -69,6 +69,47 @@ def asignaturas():
     conn.close()
     return render_template('asignaturas.html', asignaturas=asignaturas)
 
+# Ruta para el área profesor
+@app.route('/area_profesor')
+def area_profesor():
+    conn = sqlite3.connect('academia.db')
+    c = conn.cursor()
+    c.execute('SELECT * FROM alumnos')
+    alumnos = c.fetchall()
+    conn.close()
+    return render_template('area_profesor.html', alumnos=alumnos)
+
+# Ruta para editar la calificación de un alumno
+@app.route('/editar_alumno/<int:id>', methods=['GET', 'POST'])
+def editar_alumno(id):
+    conn = sqlite3.connect('academia.db')
+    c = conn.cursor()
+    
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        asignatura_id = request.form['asignatura_id']
+        calificacion = request.form['calificacion']
+        
+        c.execute('UPDATE alumnos SET nombre = ?, asignatura_id = ?, calificacion = ? WHERE id = ?',
+                  (nombre, asignatura_id, calificacion, id))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('area_profesor'))
+
+    c.execute('SELECT * FROM alumnos WHERE id = ?', (id,))
+    alumno = c.fetchone()
+    conn.close()
+    return render_template('editar_alumno.html', alumno=alumno)
+
+# Ruta para eliminar un alumno
+@app.route('/eliminar_alumno/<int:id>')
+def eliminar_alumno(id):
+    conn = sqlite3.connect('academia.db')
+    c = conn.cursor()
+    c.execute('DELETE FROM alumnos WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('area_profesor'))
+
 if __name__ == '__main__':
     app.run(debug=True)
-

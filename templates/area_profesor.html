@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Profesor</title>
+    <link href="static/css/area_profesor.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Área Profesor</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Asignatura</th>
+                <th>Calificación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno[0] }}</td>
+                <td>{{ alumno[1] }}</td>
+                <td>{{ alumno[2] }}</td>
+                <td>{{ alumno[3] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_alumno', id=alumno[0]) }}">Editar</a> |
+                    <a href="{{ url_for('eliminar_alumno', id=alumno[0]) }}" onclick="return confirm('¿Estás seguro de eliminar este alumno?')">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+</body>
+</html>
+
