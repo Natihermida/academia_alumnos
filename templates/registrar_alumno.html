@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Alumno</title>
+    <!-- Enlace a la hoja de estilo externa -->
+    <link href="static/css/registrar_alumno.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <header class="mt-4">
+            <h1 class="text-center">Registrar Nuevo Alumno</h1>
+        </header>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Formulario de Registro</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="/registrar_alumno" method="POST">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre del Alumno</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="asignatura" class="form-label">Asignatura</label>
+                                <select class="form-select" id="asignatura" name="asignatura_id" required>
+                                    <option value="">Seleccione una asignatura</option>
+                                    <!-- Aquí puedes generar dinámicamente las opciones desde la base de datos -->
+                                    <option value="1">Matemáticas</option>
+                                    <option value="2">Lengua</option>
+                                    <option value="3">Historia</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="calificacion" class="form-label">Calificación</label>
+                                <input type="number" class="form-control" id="calificacion" name="calificacion" min="0" max="10" step="0.1" required>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Registrar Alumno</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puedes añadir tus scripts aquí -->
+</body>
+</html>
+
+
+
