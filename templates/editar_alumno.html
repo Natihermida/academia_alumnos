@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Alumno</title>
     <link href="{{ url_for('static', filename='css/editar_alumno.css') }}" rel="stylesheet">
-
 </head>
 <body>
     <h1>Editar Alumno</h1>
@@ -13,8 +12,14 @@
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" value="{{ alumno[1] }}" required><br><br>
 
-        <label for="asignatura_id">Asignatura ID:</label>
-        <input type="number" id="asignatura_id" name="asignatura_id" value="{{ alumno[2] }}" required><br><br>
+        <label for="asignatura_id">Asignatura:</label>
+        <select name="asignatura_id" id="asignatura_id" required>
+            {% for asignatura in asignaturas %}
+                <option value="{{ asignatura[0] }}" {% if asignatura[0] == alumno[2] %}selected{% endif %}>
+                    {{ asignatura[1] }}
+                </option>
+            {% endfor %}
+        </select><br><br>
 
         <label for="calificacion">Calificación:</label>
         <input type="number" id="calificacion" name="calificacion" value="{{ alumno[3] }}" required><br><br>
@@ -25,4 +30,5 @@
     <a href="{{ url_for('area_profesor') }}">Volver al área profesor</a>
 </body>
 </html>
+
 

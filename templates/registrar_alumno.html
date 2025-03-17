@@ -29,10 +29,9 @@
                                 <label for="asignatura" class="form-label">Asignatura</label>
                                 <select class="form-select" id="asignatura" name="asignatura_id" required>
                                     <option value="">Seleccione una asignatura</option>
-                                    <!-- Aquí puedes generar dinámicamente las opciones desde la base de datos -->
-                                    <option value="1">Matemáticas</option>
-                                    <option value="2">Lengua</option>
-                                    <option value="3">Historia</option>
+                                    {% for asignatura in asignaturas %}
+                                    <option value="{{ asignatura[0] }}">{{ asignatura[1] }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class="mb-3">

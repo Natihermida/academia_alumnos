@@ -8,24 +8,42 @@
 </head>
 <body>
     <h1>Lista de Asignaturas</h1>
+
+    <!-- Formulario para añadir una asignatura -->
+    <h2>Añadir Asignatura</h2>
+    <form action="{{ url_for('añadir_asignatura') }}" method="POST">
+        <label for="nombre_asignatura">Nombre de la asignatura:</label>
+        <input type="text" id="nombre_asignatura" name="nombre_asignatura" required>
+        <button type="submit">Añadir</button>
+    </form>
+
+    <!-- Tabla para mostrar las asignaturas -->
+    <h2>Asignaturas Disponibles</h2>
     <table border="1">
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Eliminar</th>
         </tr>
+        {% for asignatura in asignaturas %}
         <tr>
-            <td>1</td>
-            <td>Matemáticas</td>
+            <td>{{ asignatura[0] }}</td>
+            <td>{{ asignatura[1] }}</td>
+            <td>
+                <form action="{{ url_for('eliminar_asignatura', id=asignatura[0]) }}" method="POST">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Lengua</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Historia</td>
-        </tr>
+        {% endfor %}
     </table>
+
+    <!-- Botón para volver a la página de inicio -->
+    <a href="{{ url_for('index') }}">
+        <button>Volver a Inicio</button>
+    </a>
 </body>
 </html>
+
+
 
